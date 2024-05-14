@@ -166,6 +166,7 @@ header a {
     font-family: monospace;
     font-weight: bold;
     transition: 5s;
+    z-index: 100;
 }
 
 .arrows button:hover {
@@ -210,4 +211,105 @@ header a {
 
 .slider .list .item:nth-child(1) .buttons {
     animation-delay: 1.8s;
+}
+
+.slider .next .list .item:nth-child(1) img {
+    width: 150px;
+    height: 220px;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    border-radius: 30px;
+    animation: showImage .5s linear 1 forwards;
+}
+
+@keyframes showImage {
+    to {
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+}
+
+.slider .next .thumbnails .item:nth-last-child(1) {
+    overflow: hidden;
+    animation: showThumbnails .5 linear 1 forwards;
+}
+
+.slider .prev .list .item img {
+    z-index: 100;
+}
+
+@keyframes showThumbnails {
+    from {
+        width: 0;
+        opacity: 0;
+    }
+}
+
+.slider .next .thumbnails {
+    animation: effectNext .5 linear 1 forwards;
+}
+
+@keyframes effectNext {
+    from {
+        transform: translateX(150px);
+    }
+}
+
+.slider .time {
+    position: relative;
+    z-index: 1000;
+    width: 0%;
+    height: 3px;
+    background-color: #f1683a;
+    left: 0;
+    top: 0;
+}
+
+.slider .next .time,
+.slider .prev .time {
+    animation: runningTime 3s linear 1 forwards;
+}
+
+@keyframes outFrame {
+    to {
+        width: 150px;
+        height: 220px;
+        bottom: 50px;
+        left: 50%;
+        border-radius: 20px;
+    }
+}
+
+.slider .next .arrows button,
+.slider .prev .arrows button {
+    pointer-events: none;
+}
+
+.slider .prev .list .item:nth-child(2) .content .author,
+.slider .prev .list .item:nth-child(2) .content .title,
+.slider .prev .list .item:nth-child(2) .content .topic,
+.slider .prev .list .item:nth-child(2) .content .des,
+.slider .prev .list .item:nth-child(2) .content .buttons {
+    animation: contentOut 1.5s linear 1 forwards;
+}
+
+@keyframes contentOut {
+    to {
+        transform: translateY(-150px);
+        filter: blur(20px);
+        opacity: 0;
+    }
+}
+
+@media screen and (max-width:678px) {
+    .slider .list .item .content {
+        padding-right: 0;
+    }
+    .slider .list .item .content .title {
+        font-size: 30px;
+    }
 }
